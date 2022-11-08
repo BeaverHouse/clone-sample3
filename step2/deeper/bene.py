@@ -7,7 +7,10 @@ def add_bene(nasPath, outputDir, file_name):
 
     my_image = Image.open(tempNm)  
     my_image.putalpha(255)
-    watermark = Image.open("step2/image/bene.jpg")
+    script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+    rel_path = "../image/bene.jpg"
+    abs_file_path = os.path.join(script_dir, rel_path)
+    watermark = Image.open(abs_file_path)
     watermark.putalpha(255)
     x = my_image.size[0] - watermark.size[0]
     y = my_image.size[1] - watermark.size[1]
